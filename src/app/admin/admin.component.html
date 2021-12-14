@@ -1,0 +1,153 @@
+<div id="admin" class="grid" style="margin-top: 100px;">
+    <!-- App background -->
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <!-- App -->
+    <div class="app">
+      <div class="sidebar">
+        <!-- Sidebar header -->
+        <div class="sidebar-header">
+          <img src="../../assets/images/me.jpg" />
+          <div class="sidebar-header-icons">
+            <img src="../../assets/images/status.svg" />
+            <img src="../../assets/images/message-icon.svg" />
+            <img src="../../assets/images/menu-icon.svg" />
+          </div>
+        </div>
+        <!-- Sidebar notifications -->
+        <div class="sidebar-notifications">
+          <img src="../../assets/images/notifications.svg" />
+          <div class="sidebar-notifications-message">
+            <span>{{bot['first_name']}}</span>
+            <a href="#"
+              ><img src="../../assets/images/gt-arrow.svg"
+            />{{ bot['username']}}</a>
+          </div>
+        </div>
+        <!-- Sidebar search chat -->
+        <div class="search-chat">
+          <div class="search-bar">
+            <img src="../../assets/images/search-icon.svg" />
+            <input type="text" placeholder="Search or start new chat" />
+          </div>
+        </div>
+        <!-- Chats -->
+        <div class="chats">
+          <!-- Alice -->
+          <div class="chat" *ngFor="let cobo of cobo" (click)="open(cobo.message.chat.first_name,cobo.message.chat.id)">
+            <div class="chat-left">
+              <img src="../../assets/images/alice.jpg" />
+            </div>
+            <div class="chat-right">
+              <div class="chat-right-top">
+                <span class="contact-name">{{ cobo.message.chat.first_name }}</span>
+                <span class="chat-date">{{ cobo.message.chat.id }}</span>
+              </div>
+              <div class="chat-right-bottom">
+                <div class="chat-right-bottom-left">
+                  <span class="chat-message-typing">oke</span>
+                </div>
+                <div class="chat-right-bottom-right">
+                  <span class="unread-messages-number">3</span>
+                  <span class="chat-options">
+                    <img src="../../assets/images/down-arrow.svg" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+
+        </div>
+      </div>
+      
+      <div *ngIf="click; else blank">
+        <div class="main">
+            <!-- Main chat window header -->
+            <!-- Chat window -->
+            <div class="chat-window-header">
+                <div class="chat-window-header-left">
+                  <img
+                    class="chat-window-contact-image"
+                    src="../../assets/images/timmy-m-harley.jpg"
+                  />
+                  <div class="contact-name-and-status-container" *ngFor="let cobo of cobo">
+                    <span class="chat-window-contact-name"  *ngIf="cobo.message.chat.first_name == nama">{{cobo.message.chat.first_name}}</span>
+                  </div>
+                </div>
+                <div class="chat-window-header-right">
+                  <img
+                    class="chat-window-search-icon"
+                    src="../../assets/images/search-icon.svg"
+                  />
+                  <img class="chat-window-menu-icon" src="../../assets/images/menu-icon.svg" />
+                </div>
+              </div>     
+              <div class="chat-window">
+                  <div class="container" *ngFor="let awal of awal">
+                    <div class="receiver">
+                    <span class="receiver-message-tail"
+                    ></span>
+                    <span class="receiver-message"
+                    >{{awal}}</span>
+                    </div>
+                </div>
+                <ng-container *ngFor="let sender of sender">
+                    <ng-container class="container2" *ngIf="sender[3] == id && sender[2] == true">
+                    <div class="sender">
+                    <span class="sender-message-tail"
+                    ><img src="../../assets/images/message-tail-sender.svg"
+                    /></span>
+                    <span class="sender-message"
+                    >{{sender[0]}}</span
+                    >
+                    <span class="message-status"
+                    ><img src="../../assets/images/double-check-seen.svg"
+                    /></span>
+                </div>
+            </ng-container>
+            <div class="container" *ngIf="sender[3] == id && sender[2] == false ">
+                <div class="receiver">
+                    <span class="receiver-message-tail"
+                    ></span>
+                    <span class="receiver-message"
+                    >{{sender[0]}}</span>
+                    </div>
+        </div>
+    </ng-container>
+                <!-- Type message bar -->
+                <form [formGroup]="dataForm" (ngSubmit)="submit(id)" class="type-message-bar">
+                    <div class="type-message-bar-left" >
+                    <img src="../../assets/images/icons.svg" />
+                      <img src="../../assets/images/attach-icon.svg" />
+                      </div>
+                    <div class="type-message-bar-center">
+                    <input type="text" placeholder="Type a message" formControlName="message"/>
+                    </div>
+                    <button type="submit" class="type-message-bar-right">
+                    <img src="../../assets/images/audio-icon.svg"/>
+                    </button>
+                </form>
+                <!-- <input type="file" (change)="onFileChange($event)" />
+                <input type="submit" value="upload" (click)="onUpload()">  -->
+                </div>
+              </div>
+        </div>
+      </div>
+     
+  <ng-template #blank>
+      <div class="main">
+    <div class="chat-window">
+    </div>
+</div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                          
