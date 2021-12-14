@@ -1,0 +1,8 @@
+[
+    { "id": 1, "makanan": "Nasi Goreng", "harga": 18000 },
+    { "id": 2, "makanan": "Nasi Bakar", "harga": 20000 },
+    { "id": 3, "makanan": "Capcay", "harga": 23000 },
+    { "id": 4, "makanan": "Ayam Goreng", "harga": 26000 },
+    { "id": 5, "makanan": "Ikan Bakar", "harga": 26000 }
+  ]
+  
