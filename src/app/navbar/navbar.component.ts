@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { timer } from 'rxjs';
+import { Emitters } from '../emitters/emitter';
 
 @Component({
   selector: 'app-navbar',
@@ -14,21 +15,26 @@ export class NavbarComponent implements OnInit {
   cek: boolean;
   role: string;
   name: any;
+  authenticated = localStorage.getItem('role');
 
   constructor(private router: Router, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    const obs$ = timer(1000, 5);
-    obs$.subscribe((d) => {
-      this.role = localStorage.getItem('role');
-    })
+    Emitters.authEmitter.subscribe(
+      (auth: string) => {
+        if (localStorage.getItem('role')) {
+          this.authenticated = localStorage.getItem('role');
+        } else {
+          this.authenticated = auth;
+        }
+      }
+    );
   }
 
   logout() {
     localStorage.removeItem('role');
-    this.router.navigate(['']);
-    this.role = localStorage.getItem('role');
+    this.authenticated = '';
   }
 }

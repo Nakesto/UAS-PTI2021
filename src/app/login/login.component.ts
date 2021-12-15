@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, Form, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../Auth/auth.service';
+import { Emitters } from '../emitters/emitter';
+
 
 @Component({
   selector: 'app-login',
@@ -28,14 +29,17 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login() {
+  reset() {
     const email = this.control('email').value;
     const pass = this.control('password').value;
     if (email === this.user && pass === this.password) {
-      this.router.navigate(['admin']);
-      localStorage.setItem('role', 'admin');
-    } else {
+      localStorage.setItem('role', email);
       this.router.navigate(['']);
+      Emitters.authEmitter.emit(email);
+    } else {
+      this.router.navigate(['login']);
+      Emitters.authEmitter.emit('');
+      this.dataForm.reset();
     }
   }
 }

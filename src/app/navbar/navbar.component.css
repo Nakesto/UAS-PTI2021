@@ -54,10 +54,6 @@ header .navbar ul li a {
   color: #666;
 }
 
-header .navbar ul li a.active,
-header .navbar ul li a:hover {
-  color: var(--yellow);
-}
 
 header #menu-bar {
   font-size: 3rem;

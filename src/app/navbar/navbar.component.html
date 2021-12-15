@@ -1,37 +1,33 @@
 <header>
     <div class="flex">
-        <a href="#" class="logo"><img src="../../assets/images/logo-img.png" alt=""> 
+        <a href="#" class="logo"><img src="assets/images/logo-img.png" alt=""> 
         </a>
         <h1 style="font-family: 'Times New Roman', Times, serif; color: #fbb441; padding: 11px;">Delicioso</h1>
     </div>
 
     <div id="menu-bar" class="fas fa-hamburger"></div>
     
-    <ng-container *ngIf="role == 'admin' ; else login">
+    <ng-container>
         <nav class="navbar">
             <ul>
-                <li><a class="active" href="#home">home</a></li>
-                <li><a [routerLink]="['about']">about us</a></li>
-                <li><a [routerLink]="['custom']">Custom Bot</a></li>
-                <li><a [routerLink]="['admin']">Dashboard</a></li>
-                <li>
-                    <a href="#" (click)="logout()">logout</a>
-                </li>  
+                <ng-container *ngIf="authenticated">
+                    <li><a href="#home">Home</a></li>
+                    <li><a [routerLink]="['about']">About Us</a></li>
+                    <li><a [routerLink]="['custom']">Custom Bot</a></li>
+                    <li><a [routerLink]="['admin']">Dashboard</a></li>
+                    <li><a [routerLink]="['']" (click)="logout()">Logout</a></li>
+                </ng-container>  
+                <ng-container *ngIf="!authenticated">
+                    <li><a href="#home">Home</a></li>
+                    <li><a [routerLink]="['about']">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#popular">Popular</a></li>
+                    <li><a href="#order">order</a></li>
+                    <li><a [routerLink]="['login']">Login</a></li>
+                </ng-container> 
             </ul>
         </nav>
     </ng-container> 
   </header>
-  <ng-template #login>
-    <nav class="navbar">
-        <ul>
-            <li><a class="active" href="#home">home</a></li>
-            <li><a [routerLink]="['about']">about us</a></li>
-            <li><a href="#menu">menu</a></li>
-            <li><a href="#gallery">gallery</a></li>
-            <li><a href="#popular">Popular</a></li>
-            <li><a href="#order">order</a></li>
-            <li><a [routerLink]="['login']">login</a></li>
-        </ul>
-    </nav>
- </ng-template>
   <!-- header section ends -->

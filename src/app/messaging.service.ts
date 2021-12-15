@@ -45,3 +45,6 @@ export class MessagingService {
     return this.http.get<ILokasi[]>(this._url2)
   }
 }
+
+
+

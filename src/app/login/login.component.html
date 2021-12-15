@@ -1,5 +1,5 @@
 <div class="overlay"></div>
-<form [formGroup]="dataForm" (ngSubmit)="login()" class="box">
+<form [formGroup]="dataForm" class="box">
        <div class="header">
            <h4>Login To Your Account</h4>
            <p>Welcome to Delicioso Resto, You can custom Delicoso Resto_Bot In Here!!</p>
@@ -7,7 +7,7 @@
        <div class="login-area">
            <input type="text" class="username" placeholder="Username"  formControlName="email">
            <input type="password" class="password" placeholder="Password"  formControlName="password">
-           <input type="submit" value="Login" class="submit">
+           <button type="submit" class="submit" (click)="reset()">Login</button> 
        </div>
     </form>
 

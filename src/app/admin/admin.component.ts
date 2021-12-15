@@ -91,7 +91,7 @@ export class AdminComponent implements OnInit {
         }
         if (msg[0] == "/mulai") {
           const id = msg[3];
-          message = "Welcome, " + msg[4] + "," + " " + 'You can visit our website(www.youtube.com). ' + "There are List feature bot:  1. /menu, 2. /alamat, 3. /info, 4. /time. ";
+          message = "Welcome, " + msg[4] + "," + " " + 'You can visit our website(https://nakesto.github.io/UAS-PTI2021/). ' + "There are List feature bot:  1. /menu, 2. /alamat, 3. /info, 4. /time. ";
           this.messagingService.getMessaging(message, id).subscribe(data => {
             this.messaging = [data];
             this.sender.push([this.messaging[0].result.text, this.messaging[0].result.date, this.messaging[0].result.from.is_bot, this.messaging[0].result.chat.id]);
