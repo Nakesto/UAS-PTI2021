@@ -1,4 +1,4 @@
-Penjelasan mengenai website angular kelompok 3:
+Penjelasan mengenai website angular kelompok 4:
 
 Website yang dibuat adalah website yang dibangun menggunakan
 framework angular. 
